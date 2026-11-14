@@ -16,16 +16,13 @@ Next.js 13 e-commerce administration dashboard backed by PostgreSQL and Prisma.
 Create a `.env.local` file in the repository root. Do not commit this file.
 
 ```env
-DATABASE_URL="postgresql://postgres:PASSWORD@localhost:5432/ecommerce_admin?schema=public"
-
-NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY="pk_test_..."
-CLERK_SECRET_KEY="sk_test_..."
-
-STRIPE_API_KEY="sk_test_..."
-STRIPE_WEBHOOK_SECRET="whsec_..."
+DATABASE_URL
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY
+CLERK_SECRET_KEY
+STRIPE_API_KEY
+STRIPE_WEBHOOK_SECRET
 FRONTEND_STORE_URL="http://localhost:3001"
-
-NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME="your-cloud-name"
+NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME
 ```
 
 `FRONTEND_STORE_URL` is the customer-facing storefront URL used for Stripe
@@ -53,6 +50,7 @@ Cloudinary account.
 
    URL-encode special characters in the password (for example, `@` becomes
    `%40`). If PostgreSQL uses another port or username, replace those values.
+
 
 ### Clerk
 
@@ -155,43 +153,6 @@ stripe listen --forward-to localhost:3000/api/webhook
 Copy the signing secret printed by the CLI into `STRIPE_WEBHOOK_SECRET`.
 Configure the deployed equivalent endpoint in the Stripe dashboard and use
 its production webhook signing secret.
-
-## Verification and production run
-
-Run the available checks before deploying:
-
-```bash
-npm run lint
-npm run build
-```
-
-After setting production environment variables and applying the database
-schema, start the production server with:
-
-```bash
-npm run start
-```
-
-## Deployment
-
-The project can be deployed to Vercel or another Node.js hosting provider.
-
-1. Push the repository to a Git provider and import it into the hosting
-   provider.
-2. Use `npm ci` as the install command and `npm run build` as the build
-   command. Use `npm run start` for a self-hosted Node deployment.
-3. Add all `.env.local` values as production environment variables. Use a
-   managed PostgreSQL instance and its production `DATABASE_URL`.
-4. Run `npx prisma db push` against the production database, or run the
-   migration command appropriate for your deployment process.
-5. Add the deployed admin URL to Clerk's allowed origins and redirect URLs.
-6. Configure the Stripe webhook URL as
-   `https://YOUR_ADMIN_DOMAIN/api/webhook` and set its signing secret.
-7. Confirm that the Cloudinary cloud name and upload preset are available in
-   the production environment.
-8. Open the deployed URL and verify authentication, store creation, image
-   upload, product management, checkout creation, and Stripe webhook
-   processing.
 
 ## Available scripts
 
