@@ -7,8 +7,9 @@
 		"build": "next build",
 		"start": "next start",
 		"lint": "next lint",
-		"postinstall": "prisma generate",
-		"test": "jest --runInBand"
+		"test": "jest --runInBand",
+		"postinstall": "prisma generate"
+		
 	},
 	"dependencies": {
 		"@clerk/nextjs": "^4.21.3",
@@ -57,6 +58,9 @@
 		"zustand": "^4.3.8"
 	},
 	"devDependencies": {
-		"prisma": "^4.16.1"
+		"@types/jest": "^30.0.0",
+		"jest": "^30.5.2",
+		"prisma": "^4.16.1",
+		"ts-jest": "^29.4.15"
 	}
 }
