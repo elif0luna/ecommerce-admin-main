@@ -57,6 +57,9 @@ export async function POST(
 							id: productId,
 						},
 					},
+					unitPrice:
+						products.find((product) => product.id === productId)
+							?.price || 0,
 				})),
 			},
 		},

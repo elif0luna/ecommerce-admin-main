@@ -16,7 +16,7 @@ Next.js 13 e-commerce administration dashboard backed by PostgreSQL and Prisma.
 Create a `.env.local` file in the repository root. Do not commit this file.
 
 ```env
-DATABASE_URL="mysql://USER:PASSWORD@HOST:3306/DATABASE"
+DATABASE_URL="postgresql://postgres:PASSWORD@localhost:5432/ecommerce_admin?schema=public"
 
 NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY="pk_test_..."
 CLERK_SECRET_KEY="sk_test_..."
@@ -121,6 +121,21 @@ Cloudinary account.
    ```
 
 6. Open <http://localhost:3000>. Sign in or create an account through Clerk.
+
+## Student marketplace
+
+The dashboard includes a marketplace for buying from other students:
+
+1. Open **Marketplace**, add products from one supplier to the cart, and select
+   **Buy now**.
+2. Submit your name, room number, roll number, and phone number.
+3. The supplier reviews the request under **Orders** and approves or denies it.
+4. Approved requests appear under **My Orders** with the amount owed. The
+   supplier can mark the request as **Payment settled**, and the buyer's
+   status refreshes automatically.
+
+This flow records requests and payment status only; it does not process online
+payments.
 
 ## Stripe webhooks
 
